@@ -1,8 +1,10 @@
-# PostmanRsaSupport
+# Postman Rsa Signature Support
 
 I have managed to figure out how to include RSA Signature Support within Postman.
 
 The code depends on a third party javascript library: https://kjur.github.io/jsrsasign/jsrsasign-all-min.js
+
+It all feels a bit hacky, but this was the only way i could meet my requirements as Postman does not currently have support for RSA.
 
 ## My problem?
 
@@ -18,7 +20,7 @@ Create a RSA signature from the JSON request body using a RSA SHA256 Private Key
 
 My code example is stored below.
 
-#Full Code Example
+# Full Code Example
 
 ```javascript
 var Header = require('postman-collection').Header;
