@@ -4,17 +4,17 @@ I have managed to figure out how to include RSA Signature Support within Postman
 
 The code depends on a third party javascript library: https://kjur.github.io/jsrsasign/jsrsasign-all-min.js
 
-##My problem?
+## My problem?
 
 Create a RSA signature from the JSON request body using a RSA SHA256 Private Key, append the signature as a custom HTTP header and finally perform a POST operation to a WebApi 2 controller action.
 
-##Solution?
-Using Postman pre-request script, download a third party javascript library and store it as a Postman global variable.
-IMPORTANT: after retrieving the javascript, i had to run the following command `eval(postman.getGlobalVariable("rsaLibrary"));` to give my browser access to the library.
-Then i read the request body through `request.data` and serialised it using `JSON.stringify()`
-I think retrieved the RSA private key, that i stored as a Postman Environment Variable using `postman.getEnvironmentVariable("Pem");`
-After this, i passed all of my information to the third party javascript library and executed the `sign()` function.
-I stored the output in a variable and set the header using `pm.request.headers.add()`
+## Solution?
+* Using Postman pre-request script, download a third party javascript library and store it as a Postman global variable.
+* **IMPORTANT:** after retrieving the javascript, i had to run the following command `eval(postman.getGlobalVariable("rsaLibrary"));` to give my browser access to the library.
+* Then i read the request body through `request.data` and serialised it using `JSON.stringify()`
+* I think retrieved the RSA private key, that i stored as a Postman Environment Variable using `postman.getEnvironmentVariable("Pem");`
+* After this, i passed all of my information to the third party javascript library and executed the `sign()` function.
+* I stored the output in a variable and set the header using `pm.request.headers.add()`
 
 My code example is stored below.
 
