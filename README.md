@@ -56,7 +56,7 @@ var signatureLib = new KJUR.crypto.Signature({"alg": "SHA256withRSA"});
 signatureLib.init(private_key);
 signatureLib.updateString(signingObject);
 
-var signatureHash = signatureLib.sign();
+var signatureHash = hex2b64(signatureLib.sign());
 
 console.log("Signature: " + signatureHash);
 
