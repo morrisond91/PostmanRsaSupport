@@ -43,7 +43,7 @@ if(!pm.globals.has("rsaLibrary")){
 
 eval(postman.getGlobalVariable("rsaLibrary"));
 
-var signingObject = JSON.stringify(request.data);
+var signingObject = JSON.stringify(JSON.parse(request.data));
 
 console.log("Data to Sign: " + signingObject);
 
